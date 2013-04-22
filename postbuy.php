@@ -1,10 +1,10 @@
-<?php 
+п»ї<?php 
 	if (empty($_POST[submitButton])){
 		header('Location: index.php');
 		exit;
 	}
 		
-	$link = mysql_connect('http://mysql-env-6273236.j.rsnx.ru', 'root', 'V3IlaN0caA')
+	$link = mysql_connect('mysql-env-6273236.j.rsnx.ru', 'root', 'V3IlaN0caA')
 	or die("Could not connect: " . mysql_error());
 	mysql_select_db('Portfolio');
 	mysql_set_charset('utf8',$link); 
@@ -18,7 +18,7 @@
 	
 			$result = mysql_query($query);
 			if (!$result) {
-				die('Неверный запрос: ' . mysql_error());
+				die('РќРµРІРµСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ: ' . mysql_error());
 			}
 		
 			header('Location: index.php');
@@ -28,7 +28,7 @@
 			$query = 'Update buy_market SET price =\''.$_POST[price].'\', count = count + '.$_POST[count].' WHERE ticker = \''.$_POST[ticker].'\'';
 			$result = mysql_query($query);
 			if (!$result) {
-				die('Неверный запрос: ' . mysql_error());
+				die('РќРµРІРµСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ: ' . mysql_error());
 			}
 			header('Location: index.php');
 			exit;
@@ -58,7 +58,7 @@
 			$query = 'Update buy_market SET price =\''.$_POST[price].'\', count = count - '.$_POST[count].' WHERE ticker = \''.$_POST[ticker].'\'';
 			$result = mysql_query($query);
 			if (!$result) {
-				die('Неверный запрос: ' . mysql_error());
+				die('РќРµРІРµСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ: ' . mysql_error());
 			}
 		}
 	}
