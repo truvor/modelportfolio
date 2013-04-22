@@ -41,20 +41,28 @@
 	</head>
 	<body onLoad="tableRuler()">
 	<!--Facebook login-->
-	<!--<div id = "fblogin" onclick ="login()">Click here</div>
 	<div id="fb-root"></div>
 	<script>
+		var uid =null;
 		// Additional JS functions here
-		/*window.fbAsyncInit = function () {
+		window.fbAsyncInit = function () {
+			FB.Event.subscribe('auth.login',
+				function (response) {
+					if(response.status === 'connected'){
+						uid = response.authResponse.userID;
+					}
+				//alert('You liked the URL: ' + response);
+			});
+		
 			FB.init({
 				appId : '374843705963707', // App ID
-				channelUrl : 'env-5772537.j.rsnx.ru/neww/channel.html', // Channel File
+				channelUrl : 'env-5772537.j.rsnx.ru/channel.html', // Channel File
 				status : true, // check login status
 				cookie : true, // enable cookies to allow the server to access the session
 				xfbml : true // parse XFBML
 			});
 			// Additional init code here
-			FB.getLoginStatus(function (response) {
+			/*FB.getLoginStatus(function (response) {
 				if (response.status === 'connected') {
 					// connected
 				} else if (response.status === 'not_authorized') {
@@ -64,9 +72,8 @@
 					// not_logged_in
 					login();
 				}
-			});
+			});*/
 		};
-
 
 		function login() {
 			FB.login(function (response) {
@@ -100,7 +107,7 @@
 			js.src = "//connect.facebook.net/en_US/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}
-			(document));*/
+			(document));
 	</script>
 	
 	<!--Facebook login ends-->
@@ -149,7 +156,9 @@
 				</div>
 			</div>
 			
-	<div id="container" style="height: 300px; min-width: 500px"></div>
+			<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+			
+			<div id="container" style="height: 300px; min-width: 500px"></div>
 		</div>
 		
 		<script>
