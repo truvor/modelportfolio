@@ -160,7 +160,7 @@
 			//$("button[value='sell']").toggle();
 			//$("button[value='buy']").toggleClass("btn-block btn-primary");
 				var hr = $(this).prop('href');
-				if(hr == "http://env-6273236.j.rsnx.ru/#quotes" || hr == "http://env-6273236.j.rsnx.ru/index.php/#quotes"){					
+				if(hr == "http://env-6273236.j.rsnx.ru/#quotes" || hr == "http://env-6273236.j.rsnx.ru/index.php#quotes"){					
 					$("button[value='buy']").toggleClass("btn-block", true);
 					$("button[value='buy']").css("width", "100%");		
 					$("button[value='sell']").toggle(false);
