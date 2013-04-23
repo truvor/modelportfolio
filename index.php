@@ -92,6 +92,7 @@
 
 			function onAjaxSuccess(data) {
 				document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = data
+				putPortfolio()
 			}
 
 		}
