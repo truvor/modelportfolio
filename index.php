@@ -50,6 +50,8 @@
 				function (response) {
 					if(response.status === 'connected'){
 						uid = response.authResponse.userID;
+						$('#userid').val(uid);
+                        putPortfolio()
 					}
 				//alert('You liked the URL: ' + response);
 			});
@@ -67,15 +69,35 @@
 					// connected
 					uid = response.authResponse.userID;
                     $('#userid').val(uid);
+					putPortfolio()
 				} else if (response.status === 'not_authorized') {
 					// not_authorized
+					putEmptyPortfolio()
 					//login();
 				} else {
 					// not_logged_in
+					putEmptyPortfolio()
 					//login();
 				}
 			});
 		};
+		
+		function putPortfolio() {
+			$.get(
+				"/buymarket.php", {
+				id : uid,
+			},
+				onAjaxSuccess);
+
+			function onAjaxSuccess(data) {
+				alert(data)
+				document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = data
+			}
+
+		}
+        function putEmptyPortfolio() {
+        	document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = '<tr></tr>'
+        }
 
 		function login() {
 			FB.login(function (response) {

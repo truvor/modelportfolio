@@ -1,5 +1,5 @@
 ﻿<?php 
-	if (empty($_POST[submitButton])){
+	if (empty($_POST[submitButton]) || $_POST[uid] == null){
 		header('Location: index.php');
 		exit;
 	}
