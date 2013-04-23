@@ -62,17 +62,19 @@
 				xfbml : true // parse XFBML
 			});
 			// Additional init code here
-			/*FB.getLoginStatus(function (response) {
+			FB.getLoginStatus(function (response) {
 				if (response.status === 'connected') {
 					// connected
+					uid = response.authResponse.userID;
+                    $('#userid').val(uid);
 				} else if (response.status === 'not_authorized') {
 					// not_authorized
-					login();
+					//login();
 				} else {
 					// not_logged_in
-					login();
+					//login();
 				}
-			});*/
+			});
 		};
 
 		function login() {
@@ -104,7 +106,7 @@
 			js = d.createElement('script');
 			js.id = id;
 			js.async = true;
-			js.src = "//connect.facebook.net/en_US/all.js";
+			js.src = "//connect.facebook.net/ru_RU/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}
 			(document));
@@ -157,8 +159,7 @@
 									onAjaxSuccess);
 
 								function onAjaxSuccess(data) {
-									// Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-									alert(data);
+									document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = data
 								}
 							</script>
 						</tbody>
@@ -215,7 +216,7 @@
 		<label for="count">Количество</label>
 		<input type="number" name="count" id="numeric-spinner" value="10" placeholder="Введите количество лотов">
 		<br>
-		<input type="hidden" name="uid" id="id" value=uid>
+		<input type="hidden" name="uid" id="id">
 		<!--<label for="date-picker">Введена</label>
 		<input type="time" name="time" id="date-picker"  style="width: 42%;">
 		<br>-->
