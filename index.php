@@ -216,7 +216,7 @@
 		<label for="count">Количество</label>
 		<input type="number" name="count" id="numeric-spinner" value="10" placeholder="Введите количество лотов">
 		<br>
-		<input type="hidden" name="uid" id="id">
+		<input type="hidden" name="uid" id="userid">
 		<!--<label for="date-picker">Введена</label>
 		<input type="time" name="time" id="date-picker"  style="width: 42%;">
 		<br>-->
