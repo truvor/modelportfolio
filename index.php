@@ -52,6 +52,7 @@
 						uid = response.authResponse.userID;
 						$('#userid').val(uid);
                         putPortfolio()
+						location.reload();
 					}
 				//alert('You liked the URL: ' + response);
 			});
@@ -70,6 +71,7 @@
 					uid = response.authResponse.userID;
                     $('#userid').val(uid);
 					putPortfolio()
+					location.reload();
 				} else if (response.status === 'not_authorized') {
 					// not_authorized
 					putEmptyPortfolio()
@@ -171,18 +173,7 @@
 							<th>Количество</th>
 						</tr>
 						</thead>
-						<tbody>	
-							<script>
-								$.get(
-									"/buymarket.php", {
-									id : uid,
-								},
-									onAjaxSuccess);
-
-								function onAjaxSuccess(data) {
-									document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = data
-								}
-							</script>
+						<tbody>								
 						</tbody>
 					</table>
 				</div>
