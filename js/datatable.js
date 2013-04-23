@@ -55,12 +55,12 @@ function tableRuler() {
 						}
 						trs[j].onclick = function () {
 							var name = this.getElementsByTagName("td")[2].innerHTML;
-							//addToNames(name);
+							addToNames(name);
 							if(this.className != "success")
 								this.className = "success";							
 							else 
 								this.className = "";
-							//showIntradayGraphics();
+							showIntradayGraphics();
 							return false
 						}
 					}
