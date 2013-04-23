@@ -1,8 +1,8 @@
 <?php
 
-$mysql_host     = "localhost";
+$mysql_host     = "mysql-env-4992412.jelastic.regruhosting.ru";
 $mysql_username = "root";
-$mysql_password = "";
+$mysql_password = "fF0i9RZixz";
 $mysql_database = "Portfolio";
 
 $mysql_db = mysql_connect($mysql_host, $mysql_username, $mysql_password);
@@ -13,7 +13,7 @@ if(isset($_GET['stock'])){
 	//$mysql_query    = rawurldecode($_GET['mysql']);
 	$stock = stripslashes($_GET['stock']);
 	//$mysql = mysql_query("SELECT PRICE, DATE_TIME FROM QUOTES WHERE TICKER = \"".$stock."\" AND date_time <= '2012-07-11 16:53:00' AND date_time >= '2012-07-11 05:14:01' ORDER BY DATE_TIME ");
-	$mysql = mysql_query("SELECT PRICE, DATE_TIME FROM QUOTES WHERE TICKER = \"".$stock."\" ORDER BY DATE_TIME");
+	$mysql = mysql_query("SELECT PRICE, DATE_TIME FROM quotes WHERE TICKER = \"".$stock."\" ORDER BY DATE_TIME");
 	//SELECT CAST(DATE_TIME AS DATE)DATE_TIME FROM QUOTES WHERE TICKER = "AFLT" limit 1, 5 
 	//$mysql          = mysql_query( stripslashes($st = $mysql_query) );
 	if($mysql != false and  @mysql_num_rows($mysql) > 0){
