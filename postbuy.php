@@ -11,12 +11,15 @@
 	
 	if( $_POST[submitButton] == "buy"){
 		$query = 'CREATE TABLE IF NOT EXISTS u'.$_POST[uid].' (
-  name varchar(12) NOT NULL,
-  ticker varchar(12) NOT NULL,
-  price float NOT NULL,
-  count int(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251';
-	
+					name varchar(12) NOT NULL,
+					ticker varchar(12) NOT NULL,
+					price float NOT NULL,
+					count int(10) NOT NULL
+				) ENGINE=MyISAM DEFAULT CHARSET=cp1251';
+		$result = mysql_query($query);
+		if (!$result) {
+				die('Неверный запрос: ' . mysql_error());
+			}
 		$query = 'SELECT * FROM u'.$_POST[uid].' WHERE ticker = \''.$_POST[ticker].'\'';
 		$result = mysql_query($query);
 		//$row = mysql_fetch_assoc($result);
