@@ -1,5 +1,5 @@
 ﻿<?php
-	$link = mysql_connect('mysql-env-6273236.j.rsnx.ru', 'root', 'V3IlaN0caA')
+	$link = mysql_connect('mysql-env-4992412.jelastic.regruhosting.ru', 'root', 'fF0i9RZixz')
 	or die("Could not connect: " . mysql_error());
 	mysql_set_charset('utf8',$link); 
 	
