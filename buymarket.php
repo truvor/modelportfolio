@@ -1,14 +1,19 @@
 ﻿<?php
+	if($_GET['id'] == null){
+		echo '<tr></tr>';
+		exit;
+	}
+	
 	$link = mysql_connect('mysql-env-4992412.jelastic.regruhosting.ru', 'root', 'fF0i9RZixz')
 	or die("Could not connect: " . mysql_error());
 	mysql_set_charset('utf8',$link); 
 	
 	mysql_select_db('Portfolio');	
-	$sql = 'SELECT * FROM buy_market';
-	$result = mysql_query('SELECT * FROM buy_market');
+	$sql = 'SELECT * FROM u'.$_GET['id'];
+	$result = mysql_query($sql);
 	
 	if (!$result) {
-		echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+		echo "Could not successfully run query (".$sql.") from DB: " . mysql_error();
 		exit;
 	}
 

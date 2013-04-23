@@ -132,8 +132,7 @@
 							<th>Время</th>
 						</tr>
 						</thead>
-						<tbody>
-	
+						<tbody>	
 							<?php include 'quotes.php' ?>
 						</tbody>
 					</table>					
@@ -150,7 +149,18 @@
 						</tr>
 						</thead>
 						<tbody>	
-							<?php include 'buymarket.php' ?>
+							<script>
+								$.get(
+									"/buymarket.php", {
+									id : uid,
+								},
+									onAjaxSuccess);
+
+								function onAjaxSuccess(data) {
+									// Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+									alert(data);
+								}
+							</script>
 						</tbody>
 					</table>
 				</div>
@@ -205,7 +215,7 @@
 		<label for="count">Количество</label>
 		<input type="number" name="count" id="numeric-spinner" value="10" placeholder="Введите количество лотов">
 		<br>
-		
+		<input type="hidden" name="uid" id="id" value=uid>
 		<!--<label for="date-picker">Введена</label>
 		<input type="time" name="time" id="date-picker"  style="width: 42%;">
 		<br>-->
