@@ -70,8 +70,7 @@
 					// connected
 					uid = response.authResponse.userID;
                     $('#userid').val(uid);
-					putPortfolio()
-					location.reload();
+					putPortfolio()					
 				} else if (response.status === 'not_authorized') {
 					// not_authorized
 					putEmptyPortfolio()
