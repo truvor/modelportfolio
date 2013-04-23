@@ -90,7 +90,6 @@
 				onAjaxSuccess);
 
 			function onAjaxSuccess(data) {
-				alert(data)
 				document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = data
 			}
 
