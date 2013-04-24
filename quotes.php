@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	//Проверка доступа к котировкам на бирже
 	$url = 'http://www.micex.ru/iss/engines/stock/markets/index/securities/MICEXINDEXCF/calculator.xml?date='.date("Y-m-d").'&lang=ru&calculations.columns=ticker,price';
 	$Headers = @get_headers($url);
