@@ -73,11 +73,9 @@
 					putPortfolio()					
 				} else if (response.status === 'not_authorized') {
 					// not_authorized
-					putEmptyPortfolio()
 					//login();
 				} else {
 					// not_logged_in
-					putEmptyPortfolio()
 					//login();
 				}
 			});
@@ -91,14 +89,16 @@
 				onAjaxSuccess);
 
 			function onAjaxSuccess(data) {
-				document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = data
+				document.getElementById('portfolio').innerHTML = data
+                                  $(document).ready( function() {
+		       $('#example1').dataTable( {
+		         "iDisplayLength": 8
+		       } );
+		     } )
 				tableRuler()
 			}
 
-		}
-        function putEmptyPortfolio() {
-        	document.getElementById('example1').getElementsByTagName("tbody")[0].innerHTML = '<tr></tr>'
-        }
+		}        
 
 		function login() {
 			FB.login(function (response) {
@@ -162,20 +162,7 @@
 						</tbody>
 					</table>					
 				</div>
-				<div class="tab-pane" id="portfolio">
-					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered ruler" id="example1" onselectstart="return false" onmousedown="return false">
-						<thead>
-						<tr class="header">
-							<th>#</th>
-							<th>Название</th>
-							<th>Тикер</th>
-							<th>Цена</th>
-							<th>Количество</th>
-						</tr>
-						</thead>
-						<tbody>								
-						</tbody>
-					</table>
+				<div class="tab-pane" id="portfolio">					
 				</div>
 			</div>
 			

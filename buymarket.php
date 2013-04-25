@@ -22,6 +22,19 @@
 		exit;
 	}
 	$i = 51;
+	
+	echo '<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered ruler" id="example1" onselectstart="return false" onmousedown="return false">
+						<thead>
+						<tr class="header">
+							<th>#</th>
+							<th>Название</th>
+							<th>Тикер</th>
+							<th>Цена</th>
+							<th>Количество</th>
+						</tr>
+						</thead>
+						<tbody>';
+	
 	while ($row = mysql_fetch_assoc($result)) {
 		echo '<tr id = "item'.$i.'"  ondblclick="selectItem('.$i.')">';
 		echo '<td>'.($i-50).'</td><td>'.$row["name"].'</td><td>'.$row["ticker"].'</td><td>'.$row["price"].'</td><td>'.$row["count"].'</td>';
@@ -29,6 +42,9 @@
 		$i++;
 	}
 
+	echo '</tbody>
+		</table>';
+	
 	mysql_free_result($result);
 	mysql_close($link);
 ?>
