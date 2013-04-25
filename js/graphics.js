@@ -148,39 +148,38 @@ function showIntradayGraphics() {
 		    },
 			
 			rangeSelector : {
-					buttons : [{
-							type : 'hour',
-							count : 1,
-							text : '1h'
-						}, {
-							type : 'day',
-							count : 1,
-							text : '1D'
-						}, 
-						{
-							type: 'month',
-							count: 1,
-							text: '1m'
-						},
-						{
-							type: 'month',
-							count: 6,
-							text: '6m'
-						},
-						{
-							type : 'year',
-							count : 1,
-							text : '1y'
-						},
-						{
-							type : 'all',
-							count : 1,
-							text : 'All'
-						}
-					],
-					selected : 3,
-					inputEnabled : false
-				},
+				buttons : [{
+						type : 'hour',
+						count : 1,
+						text : '1h'
+					}, {
+						type : 'day',
+						count : 1,
+						text : '1D'
+					}, {
+						type : 'month',
+						count : 1,
+						text : '1m'
+					}, {
+						type : 'month',
+						count : 6,
+						text : '6m'
+					}, {
+						type : 'year',
+						count : 1,
+						text : '1y'
+					}, {
+						type : 'all',
+						count : 1,
+						text : 'All'
+					}
+				],
+				selected : 3,
+				inputEnabled : false
+			},
+			navigator : {
+				enabled : false
+			},
 
 		    yAxis: {
 		    	labels: {
