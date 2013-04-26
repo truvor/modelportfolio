@@ -9,7 +9,7 @@
 	mysql_set_charset('utf8',$link); 
 	
 	mysql_select_db('Portfolio');	
-	$query = 'CREATE TABLE IF NOT EXISTS u'.$_POST[uid].' (
+	$query = 'CREATE TABLE IF NOT EXISTS u'.$_GET['id'].' (
 					name varchar(12) NOT NULL,
 					ticker varchar(12) NOT NULL,
 					price float NOT NULL,
