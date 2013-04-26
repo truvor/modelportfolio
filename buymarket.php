@@ -8,6 +8,17 @@
 	or die("Could not connect: " . mysql_error());
 	mysql_set_charset('utf8',$link); 
 	
+	$query = 'CREATE TABLE IF NOT EXISTS u'.$_POST[uid].' (
+					name varchar(12) NOT NULL,
+					ticker varchar(12) NOT NULL,
+					price float NOT NULL,
+					count int(10) NOT NULL
+				) ENGINE=MyISAM DEFAULT CHARSET=cp1251';
+	$result = mysql_query($query);
+	if (!$result) {
+		die('Неверный запрос: ' . mysql_error());
+	}
+	
 	mysql_select_db('Portfolio');	
 	$sql = 'SELECT * FROM u'.$_GET['id'];
 	$result = mysql_query($sql);
@@ -18,7 +29,6 @@
 	}
 
 	if (mysql_num_rows($result) == 0) {
-		echo "No rows found, nothing to print so am exiting";
 		exit;
 	}
 	$i = 51;
