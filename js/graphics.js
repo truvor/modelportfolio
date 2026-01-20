@@ -1,13 +1,13 @@
 var names = [];
 function addToNames(ticker) {
-  //push ticker in names array if not exists. If exists - delete
+  // toggle ticker in the names array
   for (var i = 0; i < names.length - 1; i++) {
-    if (names[i] == ticker) {
+    if (names[i] === ticker) {
       names[i] = null;
       break;
     }
   }
-  if (i == names.length - 1 && names[i] == ticker) {
+  if (i === names.length - 1 && names[i] === ticker) {
     names.pop();
     while (names.length > 0 && names[names.length - 1] == null) names.pop();
     return;
@@ -30,7 +30,6 @@ function showIntradayGraphics() {
     seriesCounter = 0,
     color = Highcharts.getOptions().colors[0];
 
-  // create the chart when all data is loaded
   function createChart() {
     chart = new Highcharts.StockChart({
       chart: {
@@ -136,8 +135,8 @@ function showIntradayGraphics() {
           threshold: null,
         };
 
-        // As we're loading the data asynchronously, we don't know what order it will arrive. So
-        // we keep a counter and create the chart when all the data is loaded.
+        // As we're loading the data asynchronously, we don't know in what order it will arrive. So,
+        // we count series and create the chart once all the data is loaded.
         seriesCounter++;
 
         if (seriesCounter == names.length) {
