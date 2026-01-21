@@ -8,18 +8,18 @@
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="DT_bootstrap.css">
 
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="jquery-ui.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" defer></script>
+		<script src="./jquery-ui.js" defer></script>
 
-		<script type="text/javascript" charset="utf-8" language="javascript" src="/release-datatables/media/js/jquery.dataTables.js"></script>
-		<script type="text/javascript" charset="utf-8" language="javascript" src="DT_bootstrap.js"></script>
-		<script type="text/javascript" src="bootstrap-2.0.2.js"></script>
+		<script src="./bootstrap-2.0.2.js" defer></script>
+		<script src="./jquery.dataTables.js" defer></script>
+		<script src="./DT_bootstrap.js" defer></script>
 
-		<script type="text/javascript" src="js/datatable.js"></script>
-		<script type="text/javascript" src="js/graphics.js"></script>
+		<script src="http://code.highcharts.com/stock/highstock.js" defer></script>
+		<script src="http://code.highcharts.com/stock/modules/exporting.js" defer></script>
 
-		<script src="http://code.highcharts.com/stock/highstock.js"></script>
-		<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+		<script src="./js/datatable.js" defer></script>
+		<script src="./js/graphics.js" defer></script>
 
 	<!--Hide popup on load page-->
 	<script>
@@ -69,21 +69,21 @@
 		};
 
 		function putPortfolio() {
-			$.get(
-				"/buymarket.php", {
-				id : uid,
-			},
-				onAjaxSuccess);
-
 			function onAjaxSuccess(data) {
 				document.getElementById('portfolio').innerHTML = data
-                                  $(document).ready( function() {
+                              $(document).ready( function() {
 		       $('#example1').dataTable( {
 		         "iDisplayLength": 8
 		       } );
 		     } )
 				tableRuler()
 			}
+
+			$.get(
+				"/buymarket.php", {
+				id : uid,
+			},
+				onAjaxSuccess);
 		}
 
 		// Load the SDK Asynchronously
@@ -140,7 +140,7 @@
 				$(this).tab('show');
 
 				var hr = $(this).prop('href');
-				if(hr == "http://env-4992412.jelastic.regruhosting.ru/#quotes" || hr == "http://env-4992412.jelastic.regruhosting.ru/index.php#quotes"){
+				if(hr == "http://localhost/#quotes" || hr == "http:/localhost/index.php#quotes"){
 					$("button[value='buy']").toggleClass("btn-block", true);
 					$("button[value='buy']").css("width", "100%");
 					$("button[value='sell']").toggle(false);
