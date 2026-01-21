@@ -1,29 +1,76 @@
-<?php
-	$link = mysql_connect('http://mysql-env-6273236.j.rsnx.ru', 'root', 'V3IlaN0caA')
-	or die("Could not connect: " . mysql_error());
-	mysql_set_charset('utf8',$link); 
-	
-	mysql_select_db('Portfolio');	
-	$sql = 'SELECT * FROM buy_market';
-	$result = mysql_query('SELECT * FROM buy_market');
-	
-	if (!$result) {
-		echo "Could not successfully run query ($sql) from DB: " . mysql_error();
-		exit;
-	}
+﻿<?php
+if ($_GET["id"] == null) {
+    echo "<tr></tr>";
+    exit();
+}
 
-	if (mysql_num_rows($result) == 0) {
-		echo "No rows found, nothing to print so am exiting";
-		exit;
-	}
-	$i = 51;
-	while ($row = mysql_fetch_assoc($result)) {
-		echo '<tr id = "item'.$i.'"  ondblclick="selectItem('.$i.')">';
-		echo '<td>'.($i-50).'</td><td>'.$row["name"].'</td><td>'.$row["ticker"].'</td><td>'.$row["price"].'</td><td>'.$row["count"].'</td>';
-		echo '</tr>';
-		$i++;
-	}
+($link = mysql_connect("localhost", "root", "")) or
+    die("Could not connect: " . mysql_error());
+mysql_set_charset("utf8", $link);
 
-	mysql_free_result($result);
-	mysql_close($link);
+mysql_select_db("Portfolio");
+$query =
+    "CREATE TABLE IF NOT EXISTS u" .
+    $_GET["id"] .
+    ' (
+					name varchar(12) NOT NULL,
+					ticker varchar(12) NOT NULL,
+					price float NOT NULL,
+					count int(10) NOT NULL
+				) ENGINE=MyISAM DEFAULT CHARSET=cp1251';
+$result = mysql_query($query);
+if (!$result) {
+    die("Error creating table: " . mysql_error());
+}
+
+$sql = "SELECT * FROM u" . $_GET["id"];
+$result = mysql_query($sql);
+
+if (!$result) {
+    echo "Could not successfully run query (" .
+        $sql .
+        ") from DB: " .
+        mysql_error();
+    exit();
+}
+
+if (mysql_num_rows($result) == 0) {
+    exit();
+}
+$i = 51;
+
+echo '<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered ruler" id="example1" onselectstart="return false" onmousedown="return false">
+						<thead>
+						<tr class="header">
+							<th>#</th>
+							<th>Name</th>
+							<th>Ticker</th>
+							<th>Price</th>
+							<th>Quantity</th>
+						</tr>
+						</thead>
+						<tbody>';
+
+while ($row = mysql_fetch_assoc($result)) {
+    echo '<tr id = "item' . $i . '"  ondblclick="selectItem(' . $i . ')">';
+    echo "<td>" .
+        ($i - 50) .
+        "</td><td>" .
+        $row["name"] .
+        "</td><td>" .
+        $row["ticker"] .
+        "</td><td>" .
+        $row["price"] .
+        "</td><td>" .
+        $row["count"] .
+        "</td>";
+    echo "</tr>";
+    $i++;
+}
+
+echo '</tbody>
+		</table>';
+
+mysql_free_result($result);
+mysql_close($link);
 ?>
